@@ -1,5 +1,11 @@
 from django.shortcuts import render
 
+from .models import Pedido
+
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    pedidos = Pedido.objects.all()
+    context = {
+        'pedidos': pedidos
+    }
+    return render(request, 'index.html', context)
